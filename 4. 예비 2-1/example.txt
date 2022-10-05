@@ -1,0 +1,17 @@
+{A, B, C, D, E, F, G, H, I, J, K, L, M, N, O}
+{0, 1}
+{A|e|B, A|e|I, B|e|C, B|e|F, C|0|D, D|0|E, E|e|H, F|1|G, G|e|H, H|e|B, H|e|I, I|0|J, J|1|K, K|e|L, K|e|O, L|1|M, M|1|N, N|e|L, N|e|O}
+A
+{O}
+
+{A, B, C, D}
+{0, 1}
+{A|1|B, A|1|C, B|0|D, B|1|C, C|0|D, C|1|B, D|0|D, D|1|D}
+A
+{D}
+
+{a, b, c}
+{X, Y, Z}
+{a|X|a, a|Y|a, a|Z|b, b|X|c, b|Y|a, b|Z|a, c|X|c, c|Y|c, c|Z|b}
+a
+{c}

@@ -1,0 +1,7 @@
+{a, b, c}
+{X, Y, Z}
+{a|X|a, a|Y|a, a|Z|b, b|X|c, b|Y|a, b|Z|a, c|X|c, c|Y|c, c|Z|b}
+a
+{c}
+XYXXZYZXXZXY
+ZXYZZZXXYZXZ

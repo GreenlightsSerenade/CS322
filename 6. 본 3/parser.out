@@ -1,0 +1,221 @@
+Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> term
+Rule 2     term -> factor
+Rule 3     factor -> LETTER
+Rule 4     factor -> NONE
+Rule 5     expression -> expression PLUS term
+Rule 6     term -> term factor
+Rule 7     factor -> LPAREN expression RPAREN
+Rule 8     factor -> factor ASTER
+
+Terminals, with rules where they appear
+
+ASTER                : 8
+LETTER               : 3
+LPAREN               : 7
+NONE                 : 4
+PLUS                 : 5
+RPAREN               : 7
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 5 7 0
+factor               : 2 6 8
+term                 : 1 5 6
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . term
+    (5) expression -> . expression PLUS term
+    (2) term -> . factor
+    (6) term -> . term factor
+    (3) factor -> . LETTER
+    (4) factor -> . NONE
+    (7) factor -> . LPAREN expression RPAREN
+    (8) factor -> . factor ASTER
+
+    LETTER          shift and go to state 4
+    NONE            shift and go to state 5
+    LPAREN          shift and go to state 6
+
+    expression                     shift and go to state 1
+    term                           shift and go to state 2
+    factor                         shift and go to state 3
+
+state 1
+
+    (0) S' -> expression .
+    (5) expression -> expression . PLUS term
+
+    PLUS            shift and go to state 7
+
+
+state 2
+
+    (1) expression -> term .
+    (6) term -> term . factor
+    (3) factor -> . LETTER
+    (4) factor -> . NONE
+    (7) factor -> . LPAREN expression RPAREN
+    (8) factor -> . factor ASTER
+
+    PLUS            reduce using rule 1 (expression -> term .)
+    $end            reduce using rule 1 (expression -> term .)
+    RPAREN          reduce using rule 1 (expression -> term .)
+    LETTER          shift and go to state 4
+    NONE            shift and go to state 5
+    LPAREN          shift and go to state 6
+
+    factor                         shift and go to state 8
+
+state 3
+
+    (2) term -> factor .
+    (8) factor -> factor . ASTER
+
+    LETTER          reduce using rule 2 (term -> factor .)
+    NONE            reduce using rule 2 (term -> factor .)
+    LPAREN          reduce using rule 2 (term -> factor .)
+    PLUS            reduce using rule 2 (term -> factor .)
+    $end            reduce using rule 2 (term -> factor .)
+    RPAREN          reduce using rule 2 (term -> factor .)
+    ASTER           shift and go to state 9
+
+
+state 4
+
+    (3) factor -> LETTER .
+
+    ASTER           reduce using rule 3 (factor -> LETTER .)
+    LETTER          reduce using rule 3 (factor -> LETTER .)
+    NONE            reduce using rule 3 (factor -> LETTER .)
+    LPAREN          reduce using rule 3 (factor -> LETTER .)
+    PLUS            reduce using rule 3 (factor -> LETTER .)
+    $end            reduce using rule 3 (factor -> LETTER .)
+    RPAREN          reduce using rule 3 (factor -> LETTER .)
+
+
+state 5
+
+    (4) factor -> NONE .
+
+    ASTER           reduce using rule 4 (factor -> NONE .)
+    LETTER          reduce using rule 4 (factor -> NONE .)
+    NONE            reduce using rule 4 (factor -> NONE .)
+    LPAREN          reduce using rule 4 (factor -> NONE .)
+    PLUS            reduce using rule 4 (factor -> NONE .)
+    $end            reduce using rule 4 (factor -> NONE .)
+    RPAREN          reduce using rule 4 (factor -> NONE .)
+
+
+state 6
+
+    (7) factor -> LPAREN . expression RPAREN
+    (1) expression -> . term
+    (5) expression -> . expression PLUS term
+    (2) term -> . factor
+    (6) term -> . term factor
+    (3) factor -> . LETTER
+    (4) factor -> . NONE
+    (7) factor -> . LPAREN expression RPAREN
+    (8) factor -> . factor ASTER
+
+    LETTER          shift and go to state 4
+    NONE            shift and go to state 5
+    LPAREN          shift and go to state 6
+
+    expression                     shift and go to state 10
+    term                           shift and go to state 2
+    factor                         shift and go to state 3
+
+state 7
+
+    (5) expression -> expression PLUS . term
+    (2) term -> . factor
+    (6) term -> . term factor
+    (3) factor -> . LETTER
+    (4) factor -> . NONE
+    (7) factor -> . LPAREN expression RPAREN
+    (8) factor -> . factor ASTER
+
+    LETTER          shift and go to state 4
+    NONE            shift and go to state 5
+    LPAREN          shift and go to state 6
+
+    term                           shift and go to state 11
+    factor                         shift and go to state 3
+
+state 8
+
+    (6) term -> term factor .
+    (8) factor -> factor . ASTER
+
+    LETTER          reduce using rule 6 (term -> term factor .)
+    NONE            reduce using rule 6 (term -> term factor .)
+    LPAREN          reduce using rule 6 (term -> term factor .)
+    PLUS            reduce using rule 6 (term -> term factor .)
+    $end            reduce using rule 6 (term -> term factor .)
+    RPAREN          reduce using rule 6 (term -> term factor .)
+    ASTER           shift and go to state 9
+
+
+state 9
+
+    (8) factor -> factor ASTER .
+
+    ASTER           reduce using rule 8 (factor -> factor ASTER .)
+    LETTER          reduce using rule 8 (factor -> factor ASTER .)
+    NONE            reduce using rule 8 (factor -> factor ASTER .)
+    LPAREN          reduce using rule 8 (factor -> factor ASTER .)
+    PLUS            reduce using rule 8 (factor -> factor ASTER .)
+    $end            reduce using rule 8 (factor -> factor ASTER .)
+    RPAREN          reduce using rule 8 (factor -> factor ASTER .)
+
+
+state 10
+
+    (7) factor -> LPAREN expression . RPAREN
+    (5) expression -> expression . PLUS term
+
+    RPAREN          shift and go to state 12
+    PLUS            shift and go to state 7
+
+
+state 11
+
+    (5) expression -> expression PLUS term .
+    (6) term -> term . factor
+    (3) factor -> . LETTER
+    (4) factor -> . NONE
+    (7) factor -> . LPAREN expression RPAREN
+    (8) factor -> . factor ASTER
+
+    PLUS            reduce using rule 5 (expression -> expression PLUS term .)
+    $end            reduce using rule 5 (expression -> expression PLUS term .)
+    RPAREN          reduce using rule 5 (expression -> expression PLUS term .)
+    LETTER          shift and go to state 4
+    NONE            shift and go to state 5
+    LPAREN          shift and go to state 6
+
+    factor                         shift and go to state 8
+
+state 12
+
+    (7) factor -> LPAREN expression RPAREN .
+
+    ASTER           reduce using rule 7 (factor -> LPAREN expression RPAREN .)
+    LETTER          reduce using rule 7 (factor -> LPAREN expression RPAREN .)
+    NONE            reduce using rule 7 (factor -> LPAREN expression RPAREN .)
+    LPAREN          reduce using rule 7 (factor -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 7 (factor -> LPAREN expression RPAREN .)
+    $end            reduce using rule 7 (factor -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 7 (factor -> LPAREN expression RPAREN .)
+
